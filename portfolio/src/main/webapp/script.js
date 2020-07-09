@@ -26,3 +26,24 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+    // Change state of buton when run over
+    function move() {
+        var elem = document.getElementById("tom");
+        elem.innerHTML = "Nooo"
+
+        topPos=Math.floor((Math.random() * 350) + 1);
+        leftPos =Math.floor((Math.random() * 350) + 1);
+
+        elem.style.top = topPos + "px"; 
+        elem.style.left = leftPos + "px"; 
+        
+
+    }
+
+function stop(){
+    var elem = document.getElementById("tom");
+    elem.innerHTML = "Catch mee!"
+}
+
+
