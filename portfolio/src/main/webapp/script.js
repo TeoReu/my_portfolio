@@ -32,7 +32,7 @@ function addRandomGreeting() {
         var elem = document.getElementById("tom");
         elem.innerHTML = "Nooo"
 
-        topPos=Math.floor((Math.random() * 350) + 1);
+        const topPos=Math.floor((Math.random() * 350) + 1);
         leftPos =Math.floor((Math.random() * 350) + 1);
 
         elem.style.top = topPos + "px"; 
@@ -45,5 +45,4 @@ function stop(){
     var elem = document.getElementById("tom");
     elem.innerHTML = "Catch mee!"
 }
-
 
