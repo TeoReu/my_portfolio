@@ -29,7 +29,7 @@ function addRandomGreeting() {
 
     // Change state of buton when run over
     function move() {
-        var elem = document.getElementById("tom");
+        const elem = document.getElementById("tom");
         elem.innerHTML = "Nooo"
 
         const topPos=Math.floor((Math.random() * 350) + 1);
@@ -45,4 +45,3 @@ function stop(){
     var elem = document.getElementById("tom");
     elem.innerHTML = "Catch mee!"
 }
-
