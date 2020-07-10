@@ -42,6 +42,6 @@ function addRandomGreeting() {
     }
 
 function stop(){
-    var elem = document.getElementById("tom");
+    const elem = document.getElementById("tom");
     elem.innerHTML = "Catch mee!"
 }
