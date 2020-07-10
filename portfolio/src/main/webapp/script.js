@@ -32,8 +32,8 @@ function move() {
   const elem = document.getElementById("tom");
   elem.innerHTML = "Nooo"
 
-  const topPos=Math.floor((Math.random() * 350) + 1);
-  const leftPos =Math.floor((Math.random() * 350) + 1);
+  const topPos = Math.floor((Math.random() * 350) + 1);
+  const leftPos = Math.floor((Math.random() * 350) + 1);
 
   elem.style.top = topPos + "px"; 
   elem.style.left = leftPos + "px"; 
