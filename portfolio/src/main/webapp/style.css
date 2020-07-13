@@ -33,6 +33,7 @@
     height: 240px;
     float: left;
     margin-top: 70px;
+    margin-bottom: 190px;
     border-radius: 50%;
 }
 
@@ -41,4 +42,25 @@
     margin-right: auto;
     width: 650px;
     clear: both;
+}
+
+#projects{
+    margin-left: auto;
+    margin-right: auto;
+    width: 650px;
+}
+
+.grid-proj {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+}
+
+.proj {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }

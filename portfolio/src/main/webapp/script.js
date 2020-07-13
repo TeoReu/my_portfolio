@@ -43,4 +43,17 @@ function stop(){
     elem.innerHTML = "Catch mee!"
 }
 
+function reveal(){
+    document.getElementById("euler").innerText ="                ";
+    document.getElementById("euler").style.backgroundImage = "url(images/euler.png)";
+}
+
+function hide(){
+    document.getElementById("euler").innerText ="Euler's Identity";
+    document.getElementById("euler").style.backgroundImage = none;
+}
+
+function search(){
+    window.location.replace("https://github.com/TeoReu/teoreu.github.io/blob/master/Euler_s_Identity%20(8).pdf");
+}
 
