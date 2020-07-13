@@ -16,15 +16,31 @@
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!','Salut :^)'];
+    const greetings = ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!','Salut :^)'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+    // Pick a random greeting.
+    const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+    // Add it to the page.
+    const greetingContainer = document.getElementById('greeting-container');
+    greetingContainer.innerText = greeting;
+}
+
+// Change state of buton when run over
+function move() {
+    const elem = document.getElementById("tom");
+    elem.innerHTML = "Nooo"
+
+    const topPos=Math.floor((Math.random() * 350) + 1);
+    const leftPos =Math.floor((Math.random() * 350) + 1);
+
+    elem.style.top = topPos + "px"; 
+    elem.style.left = leftPos + "px"; 
+}
+
+function stop(){
+    const elem = document.getElementById("tom");
+    elem.innerHTML = "Catch mee!"
 }
 
     // Change state of buton when run over
