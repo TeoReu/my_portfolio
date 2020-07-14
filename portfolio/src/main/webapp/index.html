@@ -5,6 +5,13 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+            defer
+        ></script>
+    <script src="./app.js">
+    </script>
   </head>
   <body>
     <div id="content">
@@ -23,16 +30,31 @@
     </div>
 
     <div id="projects">
-        <h2>My Projects:<h2>
+        <h2>My Projects:</h2>
         <div class="grid-proj">
-            <div class="proj" id="euler" onmouseover="reveal()" onmouseout="hide()" onclick="search()">Euler's Identity</div>
-            <div class="proj">2</div>
+            <div class="presentation">
+                <div class="proj" id="euler" onclick="search()">
+                    <img src="images/ebaw.jpg">
+                </div>
+                <div class="description">
+                <p>Euler's Identity.</p>
+                </div>
+            </div>
+            <div class="presentation">
+                <div class="proj" id="globehead" onclick="search()">
+                    <img src="images/globehead.png">
+                </div>
+                <div class="description">
+                <p>GlobeHead - Hackathon Project.</p>
+                </div>
+            </div>
             <div class="proj">3</div>
             <div class="proj">4</div>
             <div class="proj">5</div>
             <div class="proj">6</div>
         </div>
     </div>
+    <div id="map"></div>
     <div id="container">
         <p>I am also funny. Press button to reveal funny joke.</p>
         <button onmouseover="move()"  onmouseout="stop()" id="tom">Tom</button>

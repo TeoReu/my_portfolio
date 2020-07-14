@@ -33,7 +33,7 @@
     height: 240px;
     float: left;
     margin-top: 70px;
-    margin-bottom: 190px;
+    margin-bottom: 230px;
     border-radius: 50%;
 }
 
@@ -51,16 +51,38 @@
 }
 
 .grid-proj {
-  display: grid;
-  grid-template-columns: auto auto;
-  background-color: rgb(255, 255, 255);
-  padding: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: rgb(255, 255, 255);
 }
 
 .proj {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
+    padding:100px;
+    padding-bottom: 20px;
 }
+
+.proj img:hover{
+    opacity: 0.5;
+}
+
+.proj img{
+    width: 170px;
+    height: 170px;
+    transition: opacity .5s ease;
+    border-radius: 50%;
+    border: 15px solid black;
+}
+
+.presentation{
+    font-size: 20px;
+}
+
+.description{
+    position: relative;
+    text-align: center;
+}
+
+#map {
+  height: 100%;
+}
+

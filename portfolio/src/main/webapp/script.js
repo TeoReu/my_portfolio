@@ -44,7 +44,7 @@ function stop(){
 }
 
 function reveal(){
-    document.getElementById("euler").innerText ="                ";
+    document.getElementById("euler").innerText ="";
     document.getElementById("euler").style.backgroundImage = "url(images/euler.png)";
 }
 
@@ -56,4 +56,3 @@ function hide(){
 function search(){
     window.location.replace("https://github.com/TeoReu/teoreu.github.io/blob/master/Euler_s_Identity%20(8).pdf");
 }
-
