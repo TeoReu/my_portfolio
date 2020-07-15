@@ -121,6 +121,14 @@ post{
     display: grid;
     grid-template-columns: auto;
     position: center;
-    margin-left: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
 }
 
+.logos img{
+    margin-top: 15px;
+    margin-left: 15px;
+    height: 29px;
+    float: right;
+}
