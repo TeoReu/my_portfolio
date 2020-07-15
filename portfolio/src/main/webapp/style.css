@@ -193,4 +193,5 @@ post{
 
 .icon:hover {
   margin: -15px 1px;
+  margin-left: inherit;
 }
