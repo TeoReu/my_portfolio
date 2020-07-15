@@ -18,17 +18,23 @@
     width: 400px;
     height: 400px;
     position: relative;
-    background: yellow;
 }
 
 #selfPresentation{
     float: right ;
+    width: 300px;
+    border: 15px solid black;
+    padding: 50px;
+    margin: 20px;
 }
 
 #profilePic{
-    width: 360px;
-    height: 270px;
+    width: 157px;
+    height: 210px;
     float: left;
+    margin-top: 70px;
+    margin-bottom: 220px;
+    border-radius: 50%;
 }
 
 #aboutMe{
@@ -36,5 +42,85 @@
     margin-right: auto;
     width: 650px;
     clear: both;
+}
+
+#projects{
+    margin-left: auto;
+    margin-right: auto;
+    width: 650px;
+}
+
+.grid-proj {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.proj {
+    padding:100px;
+    padding-bottom: 20px;
+}
+
+.proj img:hover{
+    opacity: 0.5;
+}
+
+.proj img{
+    width: 170px;
+    height: 170px;
+    transition: opacity .5s ease;
+    border-radius: 50%;
+    border: 15px solid black;
+}
+
+.presentation{
+    font-size: 20px;
+}
+
+.description{
+    position: relative;
+    text-align: center;
+}
+
+.searchingBar{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: rgb(0, 0, 0);
+}
+
+.searchingItem{
+    color: white;
+    text-align: center;
+}
+
+.postbody p{
+    float: left ;
+    width: 300px;
+    border: 15px solid black;
+    padding: 50px;
+    margin: 20px;
+}
+
+.postbody img{
+    width: 157px;
+    height: 210px;
+    float: left;
+    margin-top: 70px;
+    margin-bottom: 220px;
+    border-radius: 50%;
+}
+
+post{
+    margin-left: auto;
+    margin-right: auto;
+    width: 650px;
+    clear: both;
+}
+
+#blog{
+    display: grid;
+    grid-template-columns: auto;
+    position: center;
+    margin-left: inherit;
 }
 

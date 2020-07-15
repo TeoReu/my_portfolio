@@ -43,19 +43,16 @@ function stop(){
     elem.innerHTML = "Catch mee!"
 }
 
-    // Change state of buton when run over
-function move() {
-  const elem = document.getElementById("tom");
-  elem.innerHTML = "Nooo"
-
-  const topPos = Math.floor((Math.random() * 350) + 1);
-  const leftPos = Math.floor((Math.random() * 350) + 1);
-
-  elem.style.top = topPos + "px"; 
-  elem.style.left = leftPos + "px"; 
+function reveal(){
+    document.getElementById("euler").innerText ="";
+    document.getElementById("euler").style.backgroundImage = "url(images/euler.png)";
 }
 
-function stop(){
-  const elem = document.getElementById("tom");
-  elem.innerHTML = "Catch mee!"
+function hide(){
+    document.getElementById("euler").innerText ="Euler's Identity";
+    document.getElementById("euler").style.backgroundImage = none;
+}
+
+function search(){
+    window.location.replace("https://github.com/TeoReu/teoreu.github.io/blob/master/Euler_s_Identity%20(8).pdf");
 }
