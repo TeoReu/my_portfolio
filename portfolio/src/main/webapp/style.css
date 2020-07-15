@@ -93,3 +93,33 @@
     text-align: center;
 }
 
+.postbody p{
+    float: left ;
+    width: 300px;
+    border: 15px solid black;
+    padding: 50px;
+    margin: 20px;
+}
+
+.postbody img{
+    width: 157px;
+    height: 210px;
+    float: left;
+    margin-top: 70px;
+    margin-bottom: 220px;
+    border-radius: 50%;
+}
+
+post{
+    margin-left: auto;
+    margin-right: auto;
+    width: 650px;
+    clear: both;
+}
+
+#blog{
+    display: grid;
+    grid-template-columns: auto;
+    position: center;
+    margin-left: inherit;
+}
