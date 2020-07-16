@@ -56,3 +56,8 @@ function hide(){
 function search(){
     window.location.replace("https://github.com/TeoReu/teoreu.github.io/blob/master/Euler_s_Identity%20(8).pdf");
 }
+
+function changePhoto(){
+    const nr = Math.floor((Math.random() * 6) + 1);
+    document.getElementById("photo").src = "images/" + nr + ".png";
+}

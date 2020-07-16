@@ -121,6 +121,77 @@ post{
     display: grid;
     grid-template-columns: auto;
     position: center;
-    margin-left: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
 }
 
+.logos img{
+    margin-top: 15px;
+    margin-left: 15px;
+    height: 29px;
+    float: right;
+}
+
+#gallery{
+    margin-top: 34px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 550px;
+    height: 550px;
+    display: grid;
+    grid-template-columns: 20px auto 20px;
+}
+
+#gleft{
+    background-color: grey;
+    transition: opacity .5s ease;
+}
+
+#gleft:hover{
+    opacity: 0.5;
+}
+
+#gright{
+    background-color: grey;
+    transition: opacity .5s ease;
+}
+
+#gright:hover{
+    opacity: 0.5;
+}
+
+#photos{
+    background-color: black;
+}
+
+#photo{
+    height: 550px;
+}
+
+.searchingItem:hover{
+    opacity: 0.5;
+}
+
+.icon {
+  float: left;
+  padding-top: -20px;
+  padding-bottom: 20px;
+  border-radius: 100%;
+  box-shadow: 0 0 3px #fff, inset 0 0 10px #fff;
+  cursor: pointer;
+  font-size: 1.8em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 0.1rem;
+  text-shadow: 0px 0px 0px #fff;
+    -webkit-transition: .3s;
+		 -moz-transition: .3s;
+			 -o-transition: .3s;
+			-ms-transition: .3s;
+			  	transition: .3s;
+}
+
+.icon:hover {
+  margin: -15px 1px;
+  margin-left: inherit;
+}
