@@ -1,56 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-        <div>
-        <h1>Teo Reu - My Blog</h1>
-        <div class="searchingBar">
-            <div class="searchingItem" onclick="location.href = 'index.html';">Main Page</div>
-            <div class="searchingItem" onclick="location.href = 'blog.html';">Blog</div>
-            <div class="searchingItem" onclick="location.href = 'galery.html';">Gallery</div>
-        </div>
-        </div>
-    </div>
-    <br>
-    <div id=blog>
-        <div class="post">
-            <h2>New Family Member:</h2>
-            <div class="postbody">
-                <p> Hi! My name is Fetita. I like attention at any hour of the day.
-                I enjoy sleeping and eating, I am really revolted I cannot do both at the same time,
-                maybe just in my dreams. I have a lot of toys for cats, but none of them compare
-                with the feeling I have when I scrach my family; They make a funny noice, or they
-                say something funny.
-                <br>
-                I was nice to present myself in front of you guys! Scrach you next time!
-                Love and meow to all of you!
-                </p>
-                <img src="images/kitty.jpg"> </img>
-            </div>
-        </div>
-        <div class="post">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div id="content">
             <div>
-            <h2>Flying kites and feeding ducks:</h2>
-            <div class="postbody">
-                <p> Sometimes the school or job can take a lot out of us, and not all the time
-                we have time to go in a short trip. When I find myself in this situation
-                I like to take my best friend, a kite and bread and go to the nearest park. 
-                The image of kite going trough ups and downs, sometimes hitting the ground
-                and sometimes flying so high its hard to see it, gives me peace. Ducks can
-                be funny mates to find youself hanging out with.
-                <br>
-                Yeah, so when you find yourself lost and sad, just go out with a kite.
-                </p>
-                <img src="images/kite.jpg"> </img>
-            </div>
+                <h1>Teo Reu - My Blog</h1>
+                <div class="searchingBar">
+                    <div class="searchingItem" onclick="location.href = 'index.html';">Main Page</div>
+                    <div class="searchingItem" onclick="location.href = 'blog.html';">Blog</div>
+                    <div class="searchingItem" onclick="location.href = 'galery.html';">Gallery</div>
+                </div>
             </div>
         </div>
-    </div>    
-  </body> 
+        <br>
+        <div id=blog>
+            <div class="post">
+                <h2>New Family Member:</h2>
+                <div class="postbody">
+                    <p> Hi! My name is Fetita. I like attention at any hour of the day.
+                    I enjoy sleeping and eating, I am really revolted I cannot do both at the same time,
+                    maybe just in my dreams. I have a lot of toys for cats, but none of them compare
+                    with the feeling I have when I scratch my family; They make a funny noise, or they
+                    say something funny.
+                    <br>
+                    I was nice to present myself in front of you guys! Scratch you next time!
+                    Love and meow to all of you!
+                    </p>
+                    <img src="images/blog/kitty.jpg"> </img>
+                </div>
+            </div>
+            <div class="post">
+                <div>
+                <h2>Flying kites and feeding ducks:</h2>
+                    <div class="postbody">
+                        <p> Sometimes the school or job can take a lot out of us, and not all the time
+                        we have time to go on a short trip. When I find myself in this situation
+                        I like to take my best friend, a kite and bread and go to the nearest park. 
+                        The image of the kite going through ups and downs, sometimes hitting the ground
+                        and sometimes flying so high it's hard to see it, gives me peace. Ducks can
+                        be funny mates to find yourself hanging out with.
+                        <br>
+                        Yeah, so when you find yourself lost and sad, just go out with a kite.
+                        </p>
+                        <img src="images/blog/kite.jpg"> </img>
+                    </div>
+                </div>
+            </div>
+            <div class="post">
+                <h2>Latest Original Joke:</h2>
+                <div class="postbody">
+                    <div id="container">
+                        <p>I am also funny. Press button to reveal funny joke.</p>
+                        <button onmouseover="move()"  onmouseout="stop()" id="tom">Press</button>
+                    </div>
+                </div>
+            </div>
+            <div class="post">
+                <h2>Favourite songs:</h2>
+                <div class="postbody">
+                    <div id="container">
+                        <p>I like music a lot. Instead of writing a never ending list, 
+                        press this button to be taken randomly to some of my favourite songs of 
+                        all the times. </p>
+                        <button onclick="getMusic()" id="tom">Press</button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </body> 
 </html>  
