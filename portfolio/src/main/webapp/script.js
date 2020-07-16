@@ -57,7 +57,7 @@ function search(){
     window.location.replace("https://github.com/TeoReu/teoreu.github.io/blob/master/Euler_s_Identity%20(8).pdf");
 }
 
-var nr = 1
+var nr = 1;
 
 function changePhotoRight(){
     if (nr==6){
@@ -94,5 +94,5 @@ function getMusic(){
     "https://www.youtube.com/watch?v=-dD2hTNEL3g"];
 
     const song = songs[Math.floor(Math.random() * songs.length)];
-     window.location.replace(song);
+    window.location.replace(song);
 }

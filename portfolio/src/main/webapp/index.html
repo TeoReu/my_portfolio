@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-        <h1>Teo Reu</h1>
-        <div class="searchingBar">
-            <div class="searchingItem" onclick="location.href = 'index.html';">Main Page</div>
-            <div class="searchingItem" onclick="location.href = 'blog.html';">Blog</div>
-            <div class="searchingItem" onclick="location.href = 'galery.html';">Gallery</div>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Teo Reu</h1>
+            <div class="searchingBar">
+                <div class="searchingItem" onclick="location.href = 'index.html';">Main Page</div>
+                <div class="searchingItem" onclick="location.href = 'blog.html';">Blog</div>
+                <div class="searchingItem" onclick="location.href = 'galery.html';">Gallery</div>
+            </div>
+            <div class="logos">
+                <img class="icon" src="images/logos/GitHub-Mark-32px.png" onclick="location.href = 'https://github.com/TeoReu';">
+                <img class="icon" src="images/logos/istalogo.png" onclick="location.href = 'https://www.instagram.com/teo_reu/?hl=en';">
+            </div>   
+            <button onclick="addRandomGreeting()">Hello</button>
+            <div id="greeting-container"></div>
         </div>
-        <div class="logos">
-            <img class="icon" src="images/GitHub-Mark-32px.png" onclick="location.href = 'https://github.com/TeoReu';">
-            <img class="icon" src="images/istalogo.png" onclick="location.href = 'https://www.instagram.com/teo_reu/?hl=en';">
-        </div>   
-        <p>Click here to get a random greeting:</p>
-        <button onclick="addRandomGreeting()">Hello</button>
-        <div id="greeting-container"></div>
-    </div>
-    <div id="aboutMe">
-        <div>
-            <h2>About Me:</h2>
+        <div id="aboutMe">
             <div>
-                <img id="profilePic" src="images/CSC_0331.jpg"></img>
-                <p id="selfPresentation"> My name is Teo and I just finished my first year at the 
-                University of Manchester Computer Science and Maths. If one year ago I was more 
-                passionate about Mathematics (Linear Algebra, Combinatorics, Geometry, Algorithms ...), 
-                this year I learned about programming (got more confidence in coding), so a whole new 
-                world opened to me (from games done in Unity and Python, to doing my first neural 
-                network). My hobbies are playing piano (right now I am living my dream and playing 
-                Mozart sonatas), painting (on canvas and on graphical tablet), reading (anything from 
-                Bulgakov to Camus), flying kites, and climbing (I used to climb with my parents since 
-                4, so I have it in my blood). My dream is to learn about what this world has to offer, 
-                and see it all.       
-                </p>
+                <h2>About Me:</h2>
+                <div>
+                    <img id="profilePic" src="images/CSC_0331.jpg"></img>
+                    <p id="selfPresentation"> My name is Teo and I just finished my first year at the 
+                    University of Manchester Computer Science and Maths. If one year ago I was more 
+                    passionate about Mathematics (Linear Algebra, Combinatorics, Geometry, Algorithms ...), 
+                    this year I learned about programming (got more confidence in coding), so a whole new 
+                    world opened to me (from games done in Unity and Python, to doing my first neural 
+                    network). My hobbies are playing piano (right now I am living my dream and playing 
+                    Mozart sonatas), painting (on canvas and on the graphical tablet), reading (anything from 
+                    Bulgakov to Camus), flying kites, and climbing (I used to climb with my parents since 
+                    4, so I have it in my blood). My dream is to learn about what this world has to offer, 
+                    and see it all.       
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="projects">
-        <div>
-            <h2>My Projects:</h2>
-            <div class="grid-proj">
-                <div class="presentation">
-                    <div class="proj" id="euler" onclick="search()">
-                        <img src="images/ebaw.jpg">
+        <div id="projects">
+            <div>
+                <h2>My Projects:</h2>
+                <div class="grid-proj">
+                    <div class="presentation">
+                        <div class="proj" id="euler" onclick="search()">
+                            <img src="images/projects/ebaw.jpg">
+                        </div>
+                        <div class="description">
+                            <p>Euler's Identity.</p>
+                        </div>
                     </div>
-                    <div class="description">
-                        <p>Euler's Identity.</p>
+                    <div class="presentation">
+                        <div class="proj" id="globehead" onclick="location.href = 'https://github.com/cowlingj/guh2019';">
+                            <img src="images/projects/globehead.png">
+                        </div>
+                        <div class="description">
+                            <p>GlobeHead - Hackathon Project.</p>
+                        </div>
+                    </div>
+                    <div class="presentation">
+                        <div class="proj" id="cards" onclick="location.href = 'https://github.com/TeoReu/teoreu.github.io/blob/master/ExplorationLab-ShufflingCards.pdf';">
+                            <img src="images/projects/cards.jpg">
+                        </div>
+                        <div class="description">
+                            <p>Cards Shuffling - Oxford, PROMYS.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="presentation">
-                    <div class="proj" id="globehead" onclick="search()">
-                        <img src="images/globehead.png">
-                    </div>
-                    <div class="description">
-                        <p>GlobeHead - Hackathon Project.</p>
-                    </div>
-                </div>
-                <div class="proj">3</div>
-                <div class="proj">4</div>
-                <div class="proj">5</div>
-                <div class="proj">6</div>
             </div>
         </div>
-    </div>
     </body>
 </html>
