@@ -98,3 +98,8 @@ function getMusic(){
     window.location.replace(song);
 }
 
+function getData() {
+  fetch('/data').then(response => response.text()).then((quote) => {
+    document.getElementById('data-container').innerText = quote;
+  });
+}
