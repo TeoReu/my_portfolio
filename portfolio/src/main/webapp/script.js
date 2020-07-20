@@ -99,7 +99,8 @@ function getMusic(){
 }
 
 function getData() {
-  fetch('/data').then(response => response.text()).then((quote) => {
-    document.getElementById('data-container').innerText = quote;
-  });
+    fetch('/data').then(response => response.json()).then((commentsArray) => {
+        var quote = commentsArray[1];
+        document.getElementById('data-container').innerText = quote;
+    });
 }
