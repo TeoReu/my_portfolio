@@ -39,7 +39,7 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(convertToJSON(comments));
   }
   
-  private String convertToJSON(ArrayList<String> commentsArray){
+  public static String convertToJSON(ArrayList<String> commentsArray){
     Gson gson = new Gson();
     String json = gson.toJson(commentsArray);
     return json;
