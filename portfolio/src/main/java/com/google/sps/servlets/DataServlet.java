@@ -29,9 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 
-
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+
 
   ArrayList<Comment> comments = new ArrayList<Comment>();
 
