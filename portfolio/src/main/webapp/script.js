@@ -98,3 +98,12 @@ function getMusic(){
     window.location.replace(song);
 }
 
+function getData() {
+    fetch('/data').then(response => response.json()).then((commentsArray) => {
+        var quote = "";
+        for (var i = 0; i<commentsArray.length; i++ ){
+            quote = quote + commentsArray[i] + "\n";
+        }
+        document.getElementById('data-container').innerText = quote;
+    });
+}
