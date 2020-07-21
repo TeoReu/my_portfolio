@@ -51,11 +51,13 @@ public class DataServlet extends HttpServlet {
 
       Comment comment = new Comment(id, username, message, timestamp);
       comments.add(comment);
+
     }
     response.setContentType("text/html;");
     response.getWriter().println(convertToJSON(comments));
   }
   
+
     @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String message = request.getParameter("message");

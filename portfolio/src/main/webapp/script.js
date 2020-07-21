@@ -102,6 +102,7 @@ function getData() {
     fetch('/data').then(response => response.json()).then((commentsArray) => {
         var quote = "";
         for (var i = 0; i<commentsArray.length; i++ ){
+
             quote = quote + commentsArray[i].message + "\n";
         }
         document.getElementById('data-container').innerText = quote;
