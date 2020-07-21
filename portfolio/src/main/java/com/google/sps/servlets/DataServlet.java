@@ -14,9 +14,13 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.data.Comment;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,14 +33,24 @@ import com.google.gson.Gson;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  ArrayList<String> comments = new ArrayList<String>();
+  ArrayList<Comment> comments = new ArrayList<Comment>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    if ( comments.size() == 0){
-      comments.add("Radiohead is the best ever band");
-      comments.add("I dont really agree with you, Bary. We should talk more about this.");
-      comments.add("There is nothing to talk about, they are great and this is it.");
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    this.comments = new ArrayList<Comment>();
+    for (Entity entity : results.asIterable()) {
+      long id = entity.getKey().getId();
+      String message = (String) entity.getProperty("message");
+      String username = (String) entity.getProperty("username");
+      long timestamp = (long) entity.getProperty("timestamp");
+
+      Comment comment = new Comment(id, username, message, timestamp);
+      comments.add(comment);
     }
     response.setContentType("text/html;");
     response.getWriter().println(convertToJSON(comments));
@@ -44,12 +58,13 @@ public class DataServlet extends HttpServlet {
   
     @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String comment = request.getParameter("message");
-    comments.add(comment);
+    String message = request.getParameter("message");
+    String username = request.getParameter("username");
     long timestamp = System.currentTimeMillis();
 
     Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("comment", comment);
+    commentEntity.setProperty("username", username);
+    commentEntity.setProperty("message", message);
     commentEntity.setProperty("timestamp", timestamp);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -60,7 +75,7 @@ public class DataServlet extends HttpServlet {
 
 
 
-  public static String convertToJSON(ArrayList<String> commentsArray){
+  public static String convertToJSON(ArrayList<Comment> commentsArray){
     Gson gson = new Gson();
     String json = gson.toJson(commentsArray);
     return json;

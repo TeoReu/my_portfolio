@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="loadComments()">
     <div id="">
       <h1>Fetching message from server adding it to page:</h1>
       <p>Click here to see data:</p>
@@ -17,7 +17,7 @@
       <ul>
         <li>
           <label for="name">Name:</label>
-          <input type="text" id="name" name="user_name">
+          <input type="text" id="name" name="username">
         </li>
         <li>
           <label for="msg">Message:</label>
@@ -27,6 +27,9 @@
           <button type="submit">Send your message</button>
         </li>
       </ul>
+       <ul id="comments-list">
+           <li>heeey</li>
+       </ul>
     </form>
   </body>
 </html>
