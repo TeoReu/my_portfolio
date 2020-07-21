@@ -13,5 +13,20 @@
       <button onclick="getData()">Fetch data!</button>
       <div id="data-container"></div>
     </div>
+    <form action="/data" method="POST">
+      <ul>
+        <li>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+        </li>
+        <li>
+          <label for="msg">Message:</label>
+          <textarea id="message" name="message">Higuys</textarea>
+        </li>
+        <li class="button">
+          <button type="submit">Send your message</button>
+        </li>
+      </ul>
+    </form>
   </body>
 </html>
