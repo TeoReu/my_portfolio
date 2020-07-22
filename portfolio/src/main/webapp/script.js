@@ -172,14 +172,14 @@ function getData() {
 setInterval(getData, 1000*10);
 
 function refreshComments(comments){
-  for( var i = 0; i<currentComments; i++){
+  for( var i = 0; i<currentComments.length; i++){
     if(!objInList(currentComments[i],comments)){
         currentComments[i].remove();
     }
   }
 
   for( var j = comments.length - 1; j > -1; j--){
-      if(objInList(comments[j],currentComments)){
+      if(!objInList(comments[j],currentComments.length)){
           createCommentElement(comments[j]);
       }
   }
