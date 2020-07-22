@@ -102,8 +102,34 @@ function getData() {
     fetch('/data').then(response => response.json()).then((commentsArray) => {
         var quote = "";
         for (var i = 0; i<commentsArray.length; i++ ){
-            quote = quote + commentsArray[i] + "\n";
+            quote = quote + commentsArray[i].message + "\n";
         }
         document.getElementById('data-container').innerText = quote;
     });
+}
+
+function loadComments(){
+    fetch('/data').then(response => response.json()).then((commentsArray) => {
+        const commentsListElement = document.getElementById('comments-list');
+        commentsArray.forEach((comment) => {
+            commentsListElement.appendChild(createCommentElement(comment));
+        })
+    });
+}
+
+function createCommentElement(comment) {
+    const commentElement = document.createElement('li');
+    commentElement.className = 'comment';
+
+    const usernameElement = document.createElement('span');
+    usernameElement.innerText = comment.username;
+    usernameElement.className = 'namespan';
+    const messageElement = document.createElement('span');
+    messageElement.innerText = comment.message;
+    usernameElement.className = 'messagespan';
+
+    commentElement.appendChild(messageElement);
+    commentElement.appendChild(usernameElement);
+
+    return commentElement;
 }
