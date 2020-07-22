@@ -121,15 +121,15 @@ function createCommentElement(comment) {
     const commentElement = document.createElement('li');
     commentElement.className = 'comment';
 
-    const usernameElement = document.createElement('span');
+    const usernameElement = document.createElement('div');
     usernameElement.innerText = comment.username;
-    usernameElement.className = 'namespan';
-    const messageElement = document.createElement('span');
+    usernameElement.className = 'namediv';
+    const messageElement = document.createElement('div');
     messageElement.innerText = comment.message;
-    usernameElement.className = 'messagespan';
+    messageElement.className = 'messagediv';
 
-    commentElement.appendChild(messageElement);
     commentElement.appendChild(usernameElement);
+    commentElement.appendChild(messageElement);
 
     return commentElement;
 }
