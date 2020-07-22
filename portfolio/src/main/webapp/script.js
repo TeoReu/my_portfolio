@@ -121,10 +121,12 @@ function createCommentElement(comment) {
     const commentElement = document.createElement('li');
     commentElement.className = 'comment';
 
-    const messageElement = document.createElement('span');
-    messageElement.innerText = comment.message;
     const usernameElement = document.createElement('span');
     usernameElement.innerText = comment.username;
+    usernameElement.className = 'namespan';
+    const messageElement = document.createElement('span');
+    messageElement.innerText = comment.message;
+    usernameElement.className = 'messagespan';
 
     commentElement.appendChild(messageElement);
     commentElement.appendChild(usernameElement);
