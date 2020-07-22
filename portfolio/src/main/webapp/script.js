@@ -112,7 +112,7 @@ var currentComments;
 function loadComments(){
     fetch('/data').then(response => response.json()).then((commentsArray) => {
         const commentsListElement = document.getElementById('comments-list');
-        currentcomments = commentsArray;
+        currentComments = commentsArray;
         commentsArray.forEach((comment) => {
             commentsListElement.appendChild(createCommentElement(comment));
         })
@@ -136,7 +136,8 @@ function createCommentElement(comment) {
         let test = prompt("Enter passcode:", "");
         if(test == "1234"){
             deleteComment(comment);
-            // Remove the task from the DOM.
+            var index = currentComments.indexOf(comment);
+            currentComments.splice(index,1);
             commentElement.remove();
         }
     });
@@ -160,8 +161,10 @@ function getData() {
   xhr.onload = function() {                       // When response has loaded
     // The following conditional check will not work locally - only on a server
     if(xhr.status === 200) {
-      document.getElementById('live').innerHTML = xhr.responseText;                        // If server status was ok
-      refreshComments(xhr.responseText.json()); // Update
+      var text = xhr.responseText;
+      document.getElementById('live').innerHTML = text;
+      document.getElementById('check').innerHTML = JSON.parse(text);                         // If server status was ok
+      refreshComments(JSON.parse(text)); // Update
     }
   };
 
@@ -172,24 +175,29 @@ function getData() {
 setInterval(getData, 1000*10);
 
 function refreshComments(comments){
+  document.getElementById('check').innerHTML = currentComments.length; 
   for( var i = 0; i<currentComments.length; i++){
-    if(!objInList(currentComments[i],comments)){
-        currentComments[i].remove();
+    if(objNotInList(currentComments[i],comments)){
+        currentComments[i].remove(); //how do i get to the graphic element
     }
   }
 
   for( var j = comments.length - 1; j > -1; j--){
-      if(!objInList(comments[j],currentComments.length)){
-          createCommentElement(comments[j]);
+      if(objNotInList(comments[j],currentComments)){
+          newComment = createCommentElement(comments[j]);
+          const commentsListElement = document.getElementById('comments-list');
+          commentsListElement.appendChild(newComment);
+          document.getElementById('check').innerHTML = "Hiiiiiiii"; 
       }
   }
+  currentComments = comments;
 }
 
 
-function objInList(comment, comments){
+function objNotInList(comment, comments){
   for( var i = 0; i<comments.length; i++){
-    if(_is.Equal(comment,comments[i]))
-      return true;
+    if(comment.timestamp == comments[i].timestamp)
+      return false;
   }
-  return false;
+  return true;
 }
