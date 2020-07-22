@@ -215,7 +215,7 @@ form {
   margin: 0 auto;
   width: 400px;
   padding: 1em;
-  border: 1px solid #CCC;
+  border: 2px solid black;
   border-radius: 1em;
 }
 
@@ -279,4 +279,9 @@ textarea {
   margin: 5px;
   border: 2px solid black;
   box-sizing: border-box;
+  border-radius: 1em;
+}
+
+.namediv button{
+    float: right;
 }

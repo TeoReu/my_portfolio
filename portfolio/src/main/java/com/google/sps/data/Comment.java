@@ -17,10 +17,10 @@ package com.google.sps.data;
 /** An item on a todo list. */
 public final class Comment {
   
-  private final long id;
-  private final String username;
-  private final String message;
-  private final long timestamp;
+  public final long id;
+  public final String username;
+  public final String message;
+  public final long timestamp;
 
   public Comment(long id, String username, String message, long timestamp) {
     this.id = id;

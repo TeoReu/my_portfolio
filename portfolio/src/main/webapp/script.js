@@ -108,9 +108,11 @@ function getData() {
     });
 }
 
+var currentComments;
 function loadComments(){
     fetch('/data').then(response => response.json()).then((commentsArray) => {
         const commentsListElement = document.getElementById('comments-list');
+        currentcomments = commentsArray;
         commentsArray.forEach((comment) => {
             commentsListElement.appendChild(createCommentElement(comment));
         })
@@ -128,8 +130,66 @@ function createCommentElement(comment) {
     messageElement.innerText = comment.message;
     messageElement.className = 'messagediv';
 
+    const deleteButtonElement = document.createElement('button');
+    deleteButtonElement.innerText = 'Delete';
+    deleteButtonElement.addEventListener('click', () => {
+        let test = prompt("Enter passcode:", "");
+        if(test == "1234"){
+            deleteComment(comment);
+            // Remove the task from the DOM.
+            commentElement.remove();
+        }
+    });
+
     commentElement.appendChild(usernameElement);
+    usernameElement.appendChild(deleteButtonElement);
     commentElement.appendChild(messageElement);
 
     return commentElement;
+}
+
+function deleteComment(comment) {
+    const params = new URLSearchParams();
+    params.append('id', comment.id);
+    fetch('/delete-comment', {method: 'POST', body: params});
+}
+
+function getData() {
+  var xhr = new XMLHttpRequest();                 // Create XMLHttpRequest object
+
+  xhr.onload = function() {                       // When response has loaded
+    // The following conditional check will not work locally - only on a server
+    if(xhr.status === 200) {
+      document.getElementById('live').innerHTML = xhr.responseText;                        // If server status was ok
+      refreshComments(xhr.responseText.json()); // Update
+    }
+  };
+
+  xhr.open('GET', '/data', true);        // Prepare the request
+  xhr.send(null);                                 // Send the request
+}
+
+setInterval(getData, 1000*10);
+
+function refreshComments(comments){
+  for( var i = 0; i<currentComments; i++){
+    if(!objInList(currentComments[i],comments)){
+        currentComments[i].remove();
+    }
+  }
+
+  for( var j = comments.length - 1; j > -1; j--){
+      if(objInList(comments[j],currentComments)){
+          createCommentElement(comments[j]);
+      }
+  }
+}
+
+
+function objInList(comment, comments){
+  for( var i = 0; i<comments.length; i++){
+    if(_is.Equal(comment,comments[i]))
+      return true;
+  }
+  return false;
 }
