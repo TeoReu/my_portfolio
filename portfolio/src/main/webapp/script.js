@@ -132,7 +132,7 @@ function createCommentElement(comment) {
   messageElement.className = 'messagediv';
 
   const deleteButtonElement = document.createElement('button');
-  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.innerText = 'Del';
   deleteButtonElement.addEventListener('click', () => {
   let test = prompt("Enter passcode:", "");
     if(test == "1234"){
@@ -158,45 +158,62 @@ function deleteComment(comment) {
 }
 
 function getData() {
-  var xhr = new XMLHttpRequest();                 // Create XMLHttpRequest object
-
-  xhr.onload = function() {                       // When response has loaded
-    // The following conditional check will not work locally - only on a server
+  var xhr = new XMLHttpRequest();                 
+  xhr.onload = function() {                       
     if(xhr.status === 200) {
-      var text = xhr.responseText;                   // If server status was ok
-      refreshComments(JSON.parse(text)); // Update
+      var text = xhr.responseText;                  
+      refreshComments(JSON.parse(text)); 
     }
   };
-
-  xhr.open('GET', '/data', true);        // Prepare the request
-  xhr.send(null);                                 // Send the request
+  xhr.open('GET', '/data', true);        
+  xhr.send(null);                               
 }
 
 // Refreshes the data each 2 seconds
-setInterval(getData, 1000*2);
+const milsec = 2;
+setInterval(getData, 1000*milsec);
 
 // New comments(=comments) are added to the page, and old comments(=currentComments) are removed
 function refreshComments(comments){
-  for(var i = 0; i < currentComments.length; i++){
-    if(objNotInList(currentComments[i],comments)){
-      removeCommentElement(i);
-      currentComments.splice(i,1);
+  var i = comments.length - 1;
+  var j = currentComments.length - 1;
+  while(currentComments[0].timestamp >= comments[i].timestamp){
+    if(currentComments[j].timestamp!=comments[i].timestamp){
+      removeCommentElement(j);
+      currentComments.splice(j,1);
+      if(j>0)
+        j--;
+    }
+    else{
+      if(j>0 && i >0){
+        j--;
+        i--;
+      }else if(j>0){
+        j--;
+      }else if(i>0){
+        i--;  
+      }else{
+        breack;  
+      }
     }
   }
-
-  for( var j = comments.length - 1; j > -1; j--){
-    if(objNotInList(comments[j],currentComments)){
-      newComment = createCommentElement(comments[j]);
-      const commentsListElement = document.getElementById('comments-list');
-      commentsListElement.insertBefore(newComment,commentsListElement.firstChild);
-    }
+  while(i>-1){
+    newComment = createCommentElement(comments[i]);
+    const commentsListElement = document.getElementById('comments-list');
+    commentsListElement.insertBefore(newComment,commentsListElement.firstChild);
+    i--; 
   }
+  //newComment = createCommentElement(comments[j]);
+  // const commentsListElement = document.getElementById('comments-list');
+  //commentsListElement.insertBefore(newComment,commentsListElement.firstChild);      
+  //removeCommentElement(i);
+  //currentComments.splice(i,1);
   currentComments = comments;
 }
 
 // Check if a comment is in a list of comments, by comparing timestamps
 function objNotInList(comment, comments){
-  for( var i = 0; i < comments.length; i++){
+  for(var i=0; i<comments.length; i++){
     if(comment.timestamp == comments[i].timestamp)
       return false;
   }
