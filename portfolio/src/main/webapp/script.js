@@ -193,7 +193,7 @@ function refreshComments(comments){
       }else if(i>0){
         i--;  
       }else{
-        breack;  
+        break;  
       }
     }
   }
