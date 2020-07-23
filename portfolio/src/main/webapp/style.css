@@ -215,7 +215,7 @@ form {
   margin: 0 auto;
   width: 400px;
   padding: 1em;
-  border: 1px solid #CCC;
+  border: 2px solid black;
   border-radius: 1em;
 }
 
@@ -240,7 +240,7 @@ textarea {
   font: 1em sans-serif;
   width: 300px;
   box-sizing: border-box;
-  border: 1px solid #999;
+  border: 1px solid black;
 }
 
 input:focus, 
@@ -260,8 +260,28 @@ textarea {
 }
 
 .comment{
- font: 1em sans-serif;
+  padding: 5px;
+  margin: 5px;
   width: 300px;
+}
+
+.namediv{
+  font: 2em sans-serif;
+  font-weight: bold;
+  color: rgb(0, 247, 255);
+  margin: 5px;
+  padding: 2px;
+}
+
+.messagediv{
+  font: 20px sans-serif;
+  padding: 5px;
+  margin: 5px;
+  border: 2px solid black;
   box-sizing: border-box;
-  border: 3px solid #999;
+  border-radius: 1em;
+}
+
+.namediv button{
+    float: right;
 }
