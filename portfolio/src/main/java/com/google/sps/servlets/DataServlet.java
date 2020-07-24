@@ -34,6 +34,7 @@ import com.google.gson.Gson;
 public class DataServlet extends HttpServlet {
 
   ArrayList<Comment> comments = new ArrayList<Comment>();
+  final int commentsNrLim = 5;
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -41,7 +42,7 @@ public class DataServlet extends HttpServlet {
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
-
+    
     this.comments = new ArrayList<Comment>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
