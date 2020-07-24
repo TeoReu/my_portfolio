@@ -170,55 +170,53 @@ function getData() {
 }
 
 // Refreshes the data each 2 seconds
-const milsec = 2;
-setInterval(getData, 1000*milsec);
+const sec = 2;
+setInterval(getData, 1000*sec);
 
 // New comments(=comments) are added to the page, and old comments(=currentComments) are removed
 function refreshComments(comments){
   var i = comments.length - 1;
   var j = currentComments.length - 1;
-  while(currentComments[0].timestamp >= comments[i].timestamp){
-    if(currentComments[j].timestamp!=comments[i].timestamp){
+  if((i==-1 && j> -1) || (currentComments[0].timestamp < comments[i].timestamp)){
+    while(j>-1){
       removeCommentElement(j);
       currentComments.splice(j,1);
-      if(j>0)
-        j--;
+      j--;
     }
-    else{
-      if(j>0 && i >0){
-        j--;
-        i--;
-      }else if(j>0){
-        j--;
-      }else if(i>0){
-        i--;  
-      }else{
-        break;  
+  }else{
+    while(currentComments[0].timestamp >= comments[i].timestamp){
+      if(currentComments[j].timestamp!=comments[i].timestamp){
+        removeCommentElement(j);
+        currentComments.splice(j,1);
+        if(j>0)
+            j--;
+      }
+      else{
+        if(j>0 && i >0){
+            j--;
+            i--;
+        }else if(j>0){
+            j--;
+        }else if(i>0){
+            i--;
+        }else{
+            break;
+        }
       }
     }
   }
-  while(i>-1){
+  currentCommentsTS = 0;
+  if(j>-1)
+    currentCommentsTS = currentComments[0].timestamp;
+  while(i>-1 && currentCommentsTS<comments[i].timestamp){
     newComment = createCommentElement(comments[i]);
     const commentsListElement = document.getElementById('comments-list');
     commentsListElement.insertBefore(newComment,commentsListElement.firstChild);
-    i--; 
+    i--;
   }
-  //newComment = createCommentElement(comments[j]);
-  // const commentsListElement = document.getElementById('comments-list');
-  //commentsListElement.insertBefore(newComment,commentsListElement.firstChild);      
-  //removeCommentElement(i);
-  //currentComments.splice(i,1);
   currentComments = comments;
 }
 
-// Check if a comment is in a list of comments, by comparing timestamps
-function objNotInList(comment, comments){
-  for(var i=0; i<comments.length; i++){
-    if(comment.timestamp == comments[i].timestamp)
-      return false;
-  }
-  return true;
-}
 
 // The visual comment element is removed from page
 function removeCommentElement(k){

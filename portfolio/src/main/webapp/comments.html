@@ -13,7 +13,7 @@
       <button onclick="getData()">Fetch data!</button>
       <div id="data-container"></div>
     </div>
-    <form action="/data" method="POST">
+    <form action="/data" method="POST" id="postcomment">
       <ul>
         <li>
           <label for="name">Name:</label>
@@ -28,12 +28,18 @@
         </li>
       </ul>
     </form>
+    <!--
+    <div id="nrOfComments">
+    Maximum number of comments show.
+      <select>
+        <option value="15">15<option>
+        <option value="30">30<option>
+        <option value="60">60<option>
+      </select>
+    <button onclick="nrOfComments()">Set</button>  
+    </div>
+    -->
     <ul id="comments-list">
     </ul>
-    <section id ="live">
-        <p>LALALALA</p>
-    </section>
-    <section id="check">LalAL
-    </section>
   </body>
 </html>
