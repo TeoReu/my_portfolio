@@ -117,7 +117,6 @@ function loadComments(){
       commentsListElement.appendChild(createCommentElement(comment));
     })
   });
-  checkCookie();
 }
 
 // Creating comment element with delete button 
@@ -224,6 +223,8 @@ function removeCommentElement(k){
   commentsListElement[k+1].remove();
 }
 
+var username=getCookie("username");; 
+
 function setCookie(cname,cvalue,exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -250,11 +251,28 @@ function getCookie(cname) {
 function checkCookie() {
   var user=getCookie("username");
   if (user == "") {
-     user = prompt("Please enter your name, in order to be able to delete your own comments:","");
-     if (user != "" && user != null) {
-       setCookie("username", user, 30);
-     }
+    user = prompt("Please enter your name, in order to be able to delete your own comments:","");
+    if (user != "" && user != null) {
+      setCookie("username", user, 30);
+      username = user;
+      document.getElementById("greetings").innerText="Hi "+ user +"! Log Out.";
+      document.getElementById("login").innerText = "Log out";
+      document.getElementById("name").value = username;
+    }
+  }else{
+      document.getElementById("greetings").innerText="";
+      username="";
+      document.getElementById("login").innerText = "Log in"
+      setCookie("username", "", 30);
   }
+} 
+
+function checkLoginStatus(){
+    var form = document.getElementById("postcomment");
+    if(username == "")
+        form.style.visibility = 'hidden';
+    else {
+        form.style.visibility ='visible';
+    }
+
 }
-
-

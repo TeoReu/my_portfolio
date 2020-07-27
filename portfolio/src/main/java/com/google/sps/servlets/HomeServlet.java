@@ -39,11 +39,11 @@ public class HomeServlet extends HttpServlet {
       response.getWriter().println("<p>Logout <a href=\"" + logoutUrl + "\">here</a>.</p>");
     } else {
       String urlToRedirectToAfterUserLogsIn = "/loginstatus";
-      //String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
+      String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
 
-      //response.getWriter().println("<p>Hello stranger.</p>");
-      //response.getWriter().println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
-      response.getWriter().println("<p>You are not loged in.</p>");
+      response.getWriter().println("<p>Hello stranger.</p>");
+      response.getWriter().println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
+      response.getWriter().println("No");
     }
   }
 }

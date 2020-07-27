@@ -7,6 +7,8 @@
     <script src="script.js"></script>
   </head>
   <body onload="loadComments()">
+      <div id="greetings">Hi</div>
+      <button id="login" onclick="checkCookie()"> Log in </button>
     <div id="">
       <h1>Fetching message from server adding it to page:</h1>
       <p>Click here to see data:</p>
@@ -16,8 +18,7 @@
     <form action="/data" method="POST" id="postcomment">
       <ul>
         <li>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="username">
+          <input type="hidden" id="name" name="username" value="">
         </li>
         <li>
           <label for="msg">Message:</label>
@@ -41,5 +42,6 @@
     -->
     <ul id="comments-list">
     </ul>
+    <div id="debuging">HIIIIII</div>
   </body>
 </html>
