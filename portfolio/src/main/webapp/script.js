@@ -16,13 +16,13 @@
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
-  const greetings = ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!','Salut :^)'];
+  const greetings = ["Hello world!", "¡Hola Mundo!", "你好，世界！", "Bonjour le monde!","Salut :^)"];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
+  const greetingContainer = document.getElementById("greeting-container");
   greetingContainer.innerText = greeting;
 }
 
@@ -99,19 +99,19 @@ function getMusic(){
 }
 
 function getData() {
-  fetch('/data').then(response => response.json()).then((commentsArray) => {
+  fetch("/data").then(response => response.json()).then((commentsArray) => {
     var quote = "";
     for (var i = 0; i < commentsArray.length; i++){
       quote = quote + commentsArray[i].message + "\n";
     }
-    document.getElementById('data-container').innerText = quote;
+    document.getElementById("data-container").innerText = quote;
   });
 }
 
 var currentComments; // Array of local comments
 function loadComments(){
-  fetch('/data').then(response => response.json()).then((commentsArray) => {
-    const commentsListElement = document.getElementById('comments-list');
+  fetch("/data").then(response => response.json()).then((commentsArray) => {
+    const commentsListElement = document.getElementById("comments-list");
     currentComments = commentsArray;
     commentsArray.forEach((comment) => {
       commentsListElement.appendChild(createCommentElement(comment));
@@ -121,19 +121,19 @@ function loadComments(){
 
 // Creating comment element with delete button 
 function createCommentElement(comment) {
-  const commentElement = document.createElement('li');
-  commentElement.className = 'comment';
+  const commentElement = document.createElement("li");
+  commentElement.className = "comment";
 
-  const usernameElement = document.createElement('div');
+  const usernameElement = document.createElement("div");
   usernameElement.innerText = comment.username;
-  usernameElement.className = 'namediv';
-  const messageElement = document.createElement('div');
+  usernameElement.className = "namediv";
+  const messageElement = document.createElement("div");
   messageElement.innerText = comment.message;
-  messageElement.className = 'messagediv';
+  messageElement.className = "messagediv";
 
-  const deleteButtonElement = document.createElement('button');
-  deleteButtonElement.innerText = 'Del';
-  deleteButtonElement.addEventListener('click', () => {
+  const deleteButtonElement = document.createElement("button");
+  deleteButtonElement.innerText = "Del";
+  deleteButtonElement.addEventListener("click", () => {
     if(comment.username == getCookie("username")){
       deleteComment(comment);
       var index = currentComments.indexOf(comment);
@@ -152,8 +152,8 @@ function createCommentElement(comment) {
 // Deleting a comment from server
 function deleteComment(comment) {
   const params = new URLSearchParams();
-  params.append('id', comment.id);
-  fetch('/delete-comment', {method: 'POST', body: params});
+  params.append("id", comment.id);
+  fetch("/delete-comment", {method: "POST", body: params});
 }
 
 function getData() {
@@ -164,7 +164,7 @@ function getData() {
       refreshComments(JSON.parse(text)); 
     }
   };
-  xhr.open('GET', '/data', true);        
+  xhr.open("GET", "/data", true);        
   xhr.send(null);                               
 }
 
@@ -209,7 +209,7 @@ function refreshComments(comments){
     currentCommentsTS = currentComments[0].timestamp;
   while(i>-1 && currentCommentsTS<comments[i].timestamp){
     newComment = createCommentElement(comments[i]);
-    const commentsListElement = document.getElementById('comments-list');
+    const commentsListElement = document.getElementById("comments-list");
     commentsListElement.insertBefore(newComment,commentsListElement.firstChild);
     i--;
   }
@@ -219,7 +219,7 @@ function refreshComments(comments){
 
 // The visual comment element is removed from page
 function removeCommentElement(k){
-  const commentsListElement = document.getElementById('comments-list').childNodes;
+  const commentsListElement = document.getElementById("comments-list").childNodes;
   commentsListElement[k+1].remove();
 }
 
@@ -270,26 +270,26 @@ function checkCookie() {
 function checkLoginStatus(){
   var form = document.getElementById("postcomment");
   if(username == "")
-    form.style.visibility = 'hidden';
+    form.style.visibility = "hidden";
   else {
-        form.style.visibility ='visible';
+        form.style.visibility ="visible";
   }
 }
 
 /*
 function fetchBlobstoreUrlAndShowForm() {
-  fetch('/blobstore-upload-url')
+  fetch("/blobstore-upload-url")
     .then((response) => {
       return response.text();
     })
     .then((imageUploadUrl) => {
-      const messageBlob = document.getElementById('my-form');
+      const messageBlob = document.getElementById("my-form");
       messageBlob.action = imageUploadUrl;
     });
 
-  fetch('/data-blob')
+  fetch("/data-blob")
     .then(response => response.json()).then((blobsArray) => {
-    const blobsListElement = document.getElementById('blobs-list');
+    const blobsListElement = document.getElementById("blobs-list");
     blobsArray.forEach((blob) => {
       blobsListElement.appendChild(createBlobElement(blob));
     })
@@ -297,8 +297,8 @@ function fetchBlobstoreUrlAndShowForm() {
 }
 
 function createBlobElement(blob){
-  const blobElement = document.createElement('img');
-  blobElement.className = 'image';
+  const blobElement = document.createElement("img");
+  blobElement.className = "image";
   blobElement.src = blob.url;
 
   return blobElement;
@@ -313,6 +313,8 @@ function initMap() {
       lat: 45.5351,
       lng: 25.2181
     },
-    zoom: 11
+    zoom: 11,
+    mapTypeId: "satellite"
   });
+  map.setTilt(45);
 }
