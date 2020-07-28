@@ -117,7 +117,6 @@ function loadComments(){
       commentsListElement.appendChild(createCommentElement(comment));
     })
   });
-  checkCookie();
 }
 
 // Creating comment element with delete button 
@@ -224,6 +223,8 @@ function removeCommentElement(k){
   commentsListElement[k+1].remove();
 }
 
+var username=getCookie("username");; 
+
 function setCookie(cname,cvalue,exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -234,10 +235,10 @@ function setCookie(cname,cvalue,exdays) {
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
+  var ca = decodedCookie.split(";");
   for(var i = 0; i < ca.length; i++) {
     var c = ca[i];
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) == " ") {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
@@ -250,11 +251,68 @@ function getCookie(cname) {
 function checkCookie() {
   var user=getCookie("username");
   if (user == "") {
-     user = prompt("Please enter your name, in order to be able to delete your own comments:","");
-     if (user != "" && user != null) {
-       setCookie("username", user, 30);
-     }
+    user = prompt("Please enter your name, in order to be able to delete your own comments:","");
+    if (user != "" && user != null) {
+      setCookie("username", user, 30);
+      username = user;
+      document.getElementById("greetings").innerText="Hi "+ user +"! Log Out.";
+      document.getElementById("login").innerText = "Log out";
+      document.getElementById("name").value = username;
+    }
+  }else{
+      document.getElementById("greetings").innerText="";
+      username="";
+      document.getElementById("login").innerText = "Log in"
+      setCookie("username", "", 30);
+  }
+} 
+
+function checkLoginStatus(){
+  var form = document.getElementById("postcomment");
+  if(username == "")
+    form.style.visibility = 'hidden';
+  else {
+        form.style.visibility ='visible';
   }
 }
 
+/*
+function fetchBlobstoreUrlAndShowForm() {
+  fetch('/blobstore-upload-url')
+    .then((response) => {
+      return response.text();
+    })
+    .then((imageUploadUrl) => {
+      const messageBlob = document.getElementById('my-form');
+      messageBlob.action = imageUploadUrl;
+    });
 
+  fetch('/data-blob')
+    .then(response => response.json()).then((blobsArray) => {
+    const blobsListElement = document.getElementById('blobs-list');
+    blobsArray.forEach((blob) => {
+      blobsListElement.appendChild(createBlobElement(blob));
+    })
+  });
+}
+
+function createBlobElement(blob){
+  const blobElement = document.createElement('img');
+  blobElement.className = 'image';
+  blobElement.src = blob.url;
+
+  return blobElement;
+}
+*/
+
+let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: {
+      lat: 45.5351,
+      lng: 25.2181
+    },
+    zoom: 11
+  });
+}
