@@ -276,6 +276,7 @@ function checkLoginStatus(){
   }
 }
 
+/*
 function fetchBlobstoreUrlAndShowForm() {
   fetch('/blobstore-upload-url')
     .then((response) => {
@@ -301,4 +302,17 @@ function createBlobElement(blob){
   blobElement.src = blob.url;
 
   return blobElement;
+}
+*/
+
+let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: {
+      lat: 45.5351,
+      lng: 25.2181
+    },
+    zoom: 11
+  });
 }

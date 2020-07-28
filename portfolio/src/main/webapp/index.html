@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
-    <body>
+    <body onload="initMap()">
         <div id="content">
             <h1>Teo Reu</h1>
             <div class="searchingBar">
@@ -71,5 +71,13 @@
                 </div>
             </div>
         </div>
+        <div>
+              <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT3oQrpZzx_XSlP84SOhZtYQkM_vNieDM&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+        </div>
+        <div id="map"></div>
     </body>
 </html>
