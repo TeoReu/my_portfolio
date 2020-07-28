@@ -268,11 +268,37 @@ function checkCookie() {
 } 
 
 function checkLoginStatus(){
-    var form = document.getElementById("postcomment");
-    if(username == "")
-        form.style.visibility = 'hidden';
-    else {
+  var form = document.getElementById("postcomment");
+  if(username == "")
+    form.style.visibility = 'hidden';
+  else {
         form.style.visibility ='visible';
-    }
+  }
+}
 
+function fetchBlobstoreUrlAndShowForm() {
+  fetch('/blobstore-upload-url')
+    .then((response) => {
+      return response.text();
+    })
+    .then((imageUploadUrl) => {
+      const messageBlob = document.getElementById('my-form');
+      messageBlob.action = imageUploadUrl;
+    });
+
+  fetch('/data-blob')
+    .then(response => response.json()).then((blobsArray) => {
+    const blobsListElement = document.getElementById('blobs-list');
+    blobsArray.forEach((blob) => {
+      blobsListElement.appendChild(createBlobElement(blob));
+    })
+  });
+}
+
+function createBlobElement(blob){
+  const blobElement = document.createElement('img');
+  blobElement.className = 'image';
+  blobElement.src = blob.url;
+
+  return blobElement;
 }

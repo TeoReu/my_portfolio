@@ -15,14 +15,18 @@
       <button onclick="getData()">Fetch data!</button>
       <div id="data-container"></div>
     </div>
-    <form action="/data" method="POST" id="postcomment">
+    <form action="/data" method="POST" id="postcomment" class="hidden">
       <ul>
         <li>
           <input type="hidden" id="name" name="username" value="">
         </li>
         <li>
           <label for="msg">Message:</label>
-          <textarea id="message" name="message">Higuys</textarea>
+          <textarea id="message" name="message">Hi guys</textarea>
+        </li>
+        <li>
+          <label for="files"></label>
+          <input id="file" type="file">
         </li>
         <li class="button">
           <button type="submit">Send your message</button>

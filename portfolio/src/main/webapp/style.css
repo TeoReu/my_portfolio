@@ -287,3 +287,7 @@ textarea {
 .namediv button{
     float: right;
 }
+
+.hidden{
+    display:none;
+}

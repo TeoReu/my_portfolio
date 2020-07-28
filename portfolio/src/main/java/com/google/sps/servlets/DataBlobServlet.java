@@ -15,6 +15,7 @@
 package com.google.sps.servlets;
 
 import com.google.sps.data.Comment;
+import com.google.sps.data.Blob;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -28,57 +29,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
+import java.net.URL;
 
+@WebServlet("/data-blob")
+public class DataBlobServlet extends HttpServlet {
 
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
+  ArrayList<Blob> blobs = new ArrayList<Blob>();
 
-  ArrayList<Comment> comments = new ArrayList<Comment>();
-  final int commentsNrLim = 5;
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    Query query = new Query("Blob").addSort("timestamp", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
     
-    this.comments = new ArrayList<Comment>();
+    this.blobs = new ArrayList<Blob>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
-      String message = (String) entity.getProperty("message");
-      String username = (String) entity.getProperty("username");
+      URL url = new URL((String)entity.getProperty("url"));
       long timestamp = (long) entity.getProperty("timestamp");
 
-      Comment comment = new Comment(id, username, message, timestamp);
-      comments.add(comment);
+      Blob blob = new Blob(id, url, timestamp);
+      blobs.add(blob);
     }
     response.setContentType("text/html;");
-    response.getWriter().println(convertToJSON(comments));
-  }
-  
-    @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String message = request.getParameter("message");
-    String username = request.getParameter("username");
-    long timestamp = System.currentTimeMillis();
-
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("username", username);
-    commentEntity.setProperty("message", message);
-    commentEntity.setProperty("timestamp", timestamp);
-
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
-
-    response.sendRedirect("/comments.html");
+    response.getWriter().println(convertToJSON(blobs));
   }
 
-
-
-  public static String convertToJSON(ArrayList<Comment> commentsArray){
+    public static String convertToJSON(ArrayList<Blob> blobsArray){
     Gson gson = new Gson();
-    String json = gson.toJson(commentsArray);
+    String json = gson.toJson(blobsArray);
     return json;
   }
 }
+
+
