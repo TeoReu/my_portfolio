@@ -311,10 +311,15 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: {
       lat: 45.5351,
-      lng: 25.2181
+      lng: 30.2181
     },
-    zoom: 11,
+    zoom: 7,
     mapTypeId: "satellite"
   });
   map.setTilt(45);
+  const trexMarker = new google.maps.Marker({
+    position: {lat: 45.5351, lng: 25.2181},
+    map: map,
+    title: 'Piatra Craiului Moutains'
+  });
 }
