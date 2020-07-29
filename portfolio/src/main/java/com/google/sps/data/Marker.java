@@ -15,12 +15,26 @@
 package com.google.sps.data;
 
 /** Represents a UFO sighting at a specific lat lng point. */
-public class Coordinates {
+public class Marker {
   private double lat;
   private double lng;
+  private String content;
 
-  public Coordinates(double lat, double lng) {
+  public Marker(double lat, double lng, String content) {
     this.lat = lat;
     this.lng = lng;
+    this.content = content;
+  }
+
+ public double getLat() {
+    return lat;
+  }
+
+  public double getLng() {
+    return lng;
+  }
+
+  public String getContent() {
+    return content;
   }
 }
