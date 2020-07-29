@@ -314,7 +314,7 @@ let editMarker;
 function createMap() {
   map = new google.maps.Map(
       document.getElementById('map'),
-      {center: {lat: 38.5949, lng: -94.8923}, zoom: 4});
+      {center: {lat: 45.5343, lng: 25.2181}, zoom: 4});
 
   // When the user clicks in the map, show a marker with a text box the user can
   // edit.

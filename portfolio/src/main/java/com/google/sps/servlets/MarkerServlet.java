@@ -39,7 +39,7 @@ public class MarkerServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
 
-    Collection<Marker> markers = getMarkers();
+    ArrayList<Marker> markers = getMarkers();
     Gson gson = new Gson();
     String json = gson.toJson(markers);
 
@@ -58,8 +58,8 @@ public class MarkerServlet extends HttpServlet {
   }
 
   /** Fetches markers from Datastore. */
-  private Collection<Marker> getMarkers() {
-    Collection<Marker> markers = new ArrayList<>();
+  private ArrayList<Marker> getMarkers() {
+    ArrayList<Marker> markers = new ArrayList<>();
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     Query query = new Query("Marker");
