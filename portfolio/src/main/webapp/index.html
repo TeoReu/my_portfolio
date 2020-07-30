@@ -9,28 +9,9 @@
         <script type="text/javascript">
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(drawChart);
-
-          function drawChart() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Levels');
-            data.addColumn('number', 'Slices');
-            data.addRows([
-                    ['A little', 3],
-                    ['A lot', 1],
-                    ['Not really', 1],
-                    ['Occasionaly', 1],
-                    ]);
- 
-            var options = {'title':'How much I like charts',
-                 'width':400,
-                 'height':300};
-
-            var chart = new google.visualization.PieChart(document.getElementById("chart_div"));
-            chart.draw(data, options);
-            }
         </script>
     </head>
-    <body onload="createMap()">
+    <body onload="createMap()" onload="drawChart()">
         <div id="content">
             <h1>Teo Reu</h1>
             <div class="searchingBar">
@@ -106,6 +87,6 @@
             <h2>Share with other people places where you went or would like to go:</h2>
             <div id="map"></div>
         </div>
-        <div id="chart_div">h</div>
+        <div id="chart-container">h</div>
     </body>
 </html>
