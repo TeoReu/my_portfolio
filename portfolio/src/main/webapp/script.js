@@ -398,3 +398,4 @@ function buildInfoWindowInput(lat, lng) {
 
   return containerDiv;
 }
+
