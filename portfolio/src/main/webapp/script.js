@@ -420,3 +420,23 @@ function drawChart() {
     chart.draw(data, options);
   });
 }
+
+function requestTranslation() {
+  const text = document.getElementById("selfPresentation").value;
+  const presentation = document.getElementById("selfPresentation");
+  const languageCode = document.getElementById("language").value;
+
+  presentation.innerText = "Loading...";
+
+  const params = new URLSearchParams();
+  params.append("text", text);
+  params.append("languageCode", languageCode);
+
+  fetch("/translate", {
+    method: "POST",
+    body: params
+  }).then(response => response.text())
+    .then((translatedMessage) => {
+      presentation.innerText = translatedMessage;
+  });
+}
