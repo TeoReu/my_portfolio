@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+var mykey = config.MY_KEY;
 /**
  * Adds a random greeting to the page.
  */
