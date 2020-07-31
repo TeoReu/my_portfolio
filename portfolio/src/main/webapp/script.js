@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+var mykey = config.MY_KEY;
 /**
  * Adds a random greeting to the page.
  */
@@ -397,4 +398,25 @@ function buildInfoWindowInput(lat, lng) {
   containerDiv.appendChild(button);
 
   return containerDiv;
+}
+
+function drawChart() {
+  fetch("/ufos-data").then(response => response.json())
+    .then((ufosSightings) => {
+      const data = new google.visualization.DataTable();
+      data.addColumn("string", "Year");
+      data.addColumn("number", "Sightings");
+      Object.keys(ufosSightings).forEach((currentYear) => {
+      data.addRow([currentYear, ufosSightings[currentYear]]);
+  });
+
+  const options = {
+    "title": "Ufos Sightings",
+    "width": "60%",
+    "height": 600
+  };
+
+  const chart = new google.visualization.LineChart(document.getElementById("chart-container"));
+    chart.draw(data, options);
+  });
 }
