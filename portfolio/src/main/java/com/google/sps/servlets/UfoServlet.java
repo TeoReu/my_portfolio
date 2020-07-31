@@ -22,28 +22,36 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet("/ufos-data")
 public class UfoServlet extends HttpServlet {
-
+  
+  //Using a likedhashmap beacause I assume data in the cvs is ordered.
   private LinkedHashMap<String, Integer> ufosSightings = new LinkedHashMap<>();
 
   @Override
-  public void init() {
+  public void init(){
     Scanner scanner = new Scanner(getServletContext().getResourceAsStream(
         "/WEB-INF/ufos.csv"));
-    String currentYear = new String("1969");    
+    String currentYear = "1969";    
     Integer sightings = 0;
     while (scanner.hasNextLine()) {
       String line = scanner.nextLine();
-      String[] cells = line.split("-");
-      if(cells[0].equals(currentYear))
+      //String[] cells = line.split("-");
+      try{
+        String cell = formatData(line);
+      if(cell.equals(currentYear))
         sightings += 1;
       else{
         ufosSightings.put(currentYear, sightings);
-        currentYear = cells[0];
+        currentYear = cell;
         sightings = 1;
+      }
+      } catch ( ParseException e){
+          e.printStackTrace();
       }
     }
 
@@ -57,5 +65,12 @@ public class UfoServlet extends HttpServlet {
     Gson gson = new Gson();
     String json = gson.toJson(ufosSightings);
     response.getWriter().println(json);
+  }
+
+  public String formatData(String line) throws ParseException{
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+      Date dateStr = formatter.parse(line);
+      String cell = formatter.format(dateStr);
+      return cell;
   }
 }

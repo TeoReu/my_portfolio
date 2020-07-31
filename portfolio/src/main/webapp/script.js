@@ -401,22 +401,22 @@ function buildInfoWindowInput(lat, lng) {
 }
 
 function drawChart() {
-  fetch('/ufos-data').then(response => response.json())
+  fetch("/ufos-data").then(response => response.json())
     .then((ufosSightings) => {
       const data = new google.visualization.DataTable();
-      data.addColumn('string', 'Year');
-      data.addColumn('number', 'Sightings');
+      data.addColumn("string", "Year");
+      data.addColumn("number", "Sightings");
       Object.keys(ufosSightings).forEach((currentYear) => {
       data.addRow([currentYear, ufosSightings[currentYear]]);
   });
 
   const options = {
-    'title': 'Ufos Sightings',
-    'width':600,
-    'height':500
+    "title": "Ufos Sightings",
+    "width": "60%",
+    "height": 600
   };
 
-  const chart = new google.visualization.LineChart(document.getElementById('chart-container'));
+  const chart = new google.visualization.LineChart(document.getElementById("chart-container"));
     chart.draw(data, options);
   });
 }
