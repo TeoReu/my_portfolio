@@ -28,7 +28,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.util.Scanner;
 
 /** Handles fetching and saving markers data. */
 @WebServlet("/markers")
@@ -72,6 +72,23 @@ public class MarkerServlet extends HttpServlet {
 
       Marker marker = new Marker(lat, lng, content);
       markers.add(marker);
+    }
+
+    Scanner scanner = new Scanner(getServletContext().getResourceAsStream(
+        "/WEB-INF/ufo_coordinates.csv"));
+    String currentYear = "1969";    
+    Integer sightings = 0;
+    while (scanner.hasNextLine()) {
+      String line = scanner.nextLine();
+      String[] cells = line.split(",");
+      try{
+      double lat = Double.parseDouble(cells[0]);
+      double lng = Double.parseDouble(cells[1]);
+      String content = (String) cells[2];
+      Marker marker = new Marker(lat, lng, content);
+      markers.add(marker);} catch ( java.lang.ArrayIndexOutOfBoundsException e){
+        e.printStackTrace();
+      }
     }
     return markers;
   }
