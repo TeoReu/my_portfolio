@@ -43,6 +43,7 @@ public final class FindMeetingQueryTest {
   private static final int TIME_0900AM = TimeRange.getTimeInMinutes(9, 0);
   private static final int TIME_0930AM = TimeRange.getTimeInMinutes(9, 30);
   private static final int TIME_1000AM = TimeRange.getTimeInMinutes(10, 0);
+  private static final int TIME_1030AM = TimeRange.getTimeInMinutes(10, 30);
   private static final int TIME_1100AM = TimeRange.getTimeInMinutes(11, 00);
 
   private static final int DURATION_30_MINUTES = 30;
@@ -337,8 +338,8 @@ public final class FindMeetingQueryTest {
     // Have each person have different events. We should see two options because each person has
     // split the restricted times.
     //
-    // Events  :       |--C--|     |--D--|
-    // Day     : |-----------------------------|
+    // Events  :       |--C--|     |--C--|     |--D--|
+    // Day     : |-----------------------------------|
     // Options : |--1--|     |--2--|     |--3--|
 
     Collection<Event> events = Arrays.asList(
@@ -357,7 +358,8 @@ public final class FindMeetingQueryTest {
     Collection<TimeRange> expected =
         Arrays.asList(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, TIME_0800AM, false),
             TimeRange.fromStartEnd(TIME_0830AM, TIME_0900AM, false),
-            TimeRange.fromStartEnd(TIME_0930AM, TimeRange.END_OF_DAY, true));
+            TimeRange.fromStartEnd(TIME_0930AM, TIME_1000AM, false),
+            TimeRange.fromStartEnd(TIME_1030AM, TimeRange.END_OF_DAY, true));
 
     Assert.assertEquals(expected, actual);
   }

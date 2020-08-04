@@ -25,7 +25,7 @@ public final class FindMeetingQuery {
     System.out.println("TEST");
     List<TimeRange> list= new ArrayList<TimeRange>();
     list.add(TimeRange.WHOLE_DAY);
-    if(request.getAttendees().size() == 0 ){
+    if(request.getAttendees().size() == 0 && request.getOptionalAttendees().size()  == 0){
       return Arrays.asList(TimeRange.WHOLE_DAY);
     }
 
@@ -46,6 +46,7 @@ public final class FindMeetingQuery {
 
     //Remove Timegaps like [a,a)
     list = removeSmallGaps(list,request);
+    System.out.println(request.getAttendees());
 
 
     //Checking out optional atteendees schedule
