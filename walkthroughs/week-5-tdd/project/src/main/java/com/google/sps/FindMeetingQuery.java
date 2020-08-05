@@ -44,31 +44,27 @@ public final class FindMeetingQuery {
       }
     }
 
-    //Remove Timegaps like [a,a)
+    //Remove Timegaps like [a,b) where b-a < request.duration()
     list = removeSmallGaps(list,request);
     System.out.println(request.getAttendees());
-
 
     //Checking out optional atteendees schedule
     if(request.getOptionalAttendees().size() != 0){
       System.out.println("There are optional atteendees");
       List<TimeRange> gapsWithOptionalAttendees = new ArrayList<TimeRange>(list);
       System.out.println(gapsWithOptionalAttendees);
+      
       for(Event event : events){
         if(checkCommonAttendees(event,request.getOptionalAttendees()))
           gapsWithOptionalAttendees = sliceEventFromToTimeRange(event,gapsWithOptionalAttendees);
       }
-      System.out.println(gapsWithOptionalAttendees);
-      gapsWithOptionalAttendees = removeSmallGaps(gapsWithOptionalAttendees,request);
-      System.out.println(gapsWithOptionalAttendees);
-      if(gapsWithOptionalAttendees.size() != 0)
 
+      gapsWithOptionalAttendees = removeSmallGaps(gapsWithOptionalAttendees,request);
+
+      if(gapsWithOptionalAttendees.size() != 0)
         return gapsWithOptionalAttendees;
     }
-    
 
-
-    
     return list;  
     //throw new UnsupportedOperationException("TODO: Implement this method.");
   }
